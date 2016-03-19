@@ -5,21 +5,13 @@
       .module('faculty', [])
       .service('faculty', facultyService);
 
-   facultyService.$inject = ['$http', 'apiServer'];
+   facultyService.$inject = ['apiService'];
 
-   function facultyService($http, apiServer) {
+   function facultyService(apiService) {
 
 
       this.getList = function() {
-         return $http({
-            method: 'GET',
-            url: apiServer + '/faculty/getRecords',
-            headers: {
-               'Content-Type': 'application/x-www-form-urlencoded'
-            }
-         }).then(function (response) {
-            return response.data;
-         });
+         return apiService.getList('faculty');
       };
    }
 })();

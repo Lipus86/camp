@@ -5,30 +5,16 @@
       .module('subject', [])
       .service('subject', subjectService);
 
-   subjectService.$inject = ['$http', 'apiServer'];
+   subjectService.$inject = ['apiService'];
 
-   function subjectService($http, apiServer) {
+   function subjectService(apiService) {
 
 
       this.getList = function() {
-         return $http({
-            method: 'GET',
-            url: apiServer + '/subject/getRecords',
-            headers: {
-               'Content-Type': 'application/x-www-form-urlencoded'
-            }
-         }).then(function (response) {
-            return response.data;
-         });
+         return apiService.getList('subject');
       };
       this.delete = function (id) {
-         return $http({
-            method: 'GET',
-            url: apiServer + 'subject/del/' + id,
-            headers: {
-               'Content-Type': 'application/x-www-form-urlencoded'
-            }
-         });
-      }
+         return apiService.delete('subject', id);
+      };
    }
 })();

@@ -5,51 +5,22 @@
       .module('group', [])
       .service('group', groupService);
 
-   groupService.$inject = ['$http', 'apiServer'];
+   groupService.$inject = ['apiService'];
 
-   function groupService($http, apiServer) {
+   function groupService(apiService) {
 
 
       this.getList = function() {
-         return $http({
-            method: 'GET',
-            url: apiServer + '/group/getRecords',
-            headers: {
-               'Content-Type': 'application/x-www-form-urlencoded'
-            }
-         }).then(function (response) {
-            return response.data;
-         });
+         return apiService.getList('group');
       };
       this.getItem = function(id) {
-         return $http({
-            method: 'GET',
-            url: apiServer + '/group/getRecords/' + id,
-            headers: {
-               'Content-Type': 'application/x-www-form-urlencoded'
-            }
-         }).then(function (response) {
-            return response.data[0];
-         });
+         return apiService.getItem('group', id);
       };
       this.delete = function (id) {
-         return $http({
-            method: 'GET',
-            url: apiServer + 'group/del/' + id,
-            headers: {
-               'Content-Type': 'application/x-www-form-urlencoded'
-            }
-         });
-      }
+         return apiService.delete('group', id);
+      };
       this.update = function (id, data) {
-         return $http({
-            method: 'POST',
-            url: apiServer + 'group/update/' + id,
-            data: data,
-            headers: {
-               'Content-Type': 'application/x-www-form-urlencoded'
-            }
-         });
+         return apiService.delete('group', id, data);
       }
    }
 })();

@@ -5,9 +5,9 @@
       .module('statistic', [])
       .service('statistic', statisticService);
 
-   statisticService.$inject = ['$http', '$q', 'apiServer'];
+   statisticService.$inject = ['$q', 'apiService'];
 
-   function statisticService($http, $q, apiServer) {
+   function statisticService($q, apiService) {
       var entities = {
          3: {
             text: 'Subjects',
@@ -26,22 +26,17 @@
          }
       };
 
-
       this.getData = function() {
          var def = $q.defer();
          var promises = [];
-         
+
          angular.forEach(entities, function(value, key) {
             promises.push(
-               $http({
-                  method: 'GET',
-                  url: apiServer + '/' + value.api_name + '/countRecords',
-                  headers: {
-                     'Content-Type': 'application/x-www-form-urlencoded'
+               apiService.count(value.api_name).then(
+                  function (count) {
+                     entities[key].count = count;
                   }
-               }).then(function(response) {
-                  entities[key].count = response.data.numberOfRecords;
-               })
+               )
             );
          });
          $q.all(promises).then(

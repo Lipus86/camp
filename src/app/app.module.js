@@ -10,11 +10,13 @@
          'dashboard',
 
          //services
+         'apiService',
          'statistic',
          'group',
          'subject',
          'speciality',
-         'faculty'
+         'faculty',
+         'student'
       ])
       .config(function($urlRouterProvider, $locationProvider) {
 

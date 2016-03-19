@@ -18,7 +18,6 @@
       );
 
       vm.go = function (state) {
-         console.log(state);
          $state.go(state);
       }
    }
