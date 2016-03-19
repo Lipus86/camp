@@ -1,0 +1,19 @@
+<table class="table table-hover table-bordered">
+   <thead>
+      <tr>
+         <th>#</th>
+         <th style="width: 80%;">Name</th>
+         <th colspan="3">Controls</th>
+      </tr>
+   </thead>
+   <tbody>
+      <tr ng-repeat="subject in subjects.list">
+
+         <td>{{subject.subject_id}}</td>
+         <td><strong>{{subject.subject_name}}</strong></td>
+         <td><button class="btn btn-primary" ng-click="">Edit</button></td>
+         <td><button class="btn btn-success" ng-click="">Students</button></td>
+         <td><button class="btn btn-danger" ng-click="subjects.delete(subject.subject_id, $index)">Remove</button></td>
+      </tr>
+   </tbody>
+</table>

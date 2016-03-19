@@ -1,21 +1,26 @@
-var gulp = require('gulp');
-var inject = require('gulp-inject');
-var browserSync = require('browser-sync').create();
-var bowerFiles = require('main-bower-files');
+var gulp = require('gulp'),
+   inject = require('gulp-inject'),
+   browserSync = require('browser-sync').create(),
+   bowerFiles = require('main-bower-files'),
+   angularFilesort = require('gulp-angular-filesort')
+   spa = require("browser-sync-spa");
 
 gulp.task('inject', function() {
-   var target = gulp.src('src/index.html');
-   // It's not necessary to read the files (will speed up things), we're only after their paths:
-   var sources = gulp.src(['./src/**/*.js', './src/**/*.css'], {
-      read: false
-   });
-
-   return target.pipe(inject(sources))
+   return gulp.src('./src/index.html')
+      .pipe(inject(
+         gulp.src(['./src/**/*.js', './src/**/*.css']).pipe(angularFilesort())
+      ))
       .pipe(inject(gulp.src(bowerFiles(), {read: false}), {name: 'bower'}))
       .pipe(gulp.dest('./src'));
 });
 
-gulp.task('serve', function() {
+gulp.task('serve', ['inject'], function() {
+   browserSync.use(spa({
+      selector: "[ng-app]",
+      history: {
+         index: '/index.html'
+      }
+   }));
 
    browserSync.init({
       server: {

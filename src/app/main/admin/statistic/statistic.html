@@ -1,0 +1,14 @@
+<table class="table table-hover table-bordered">
+   <thead>
+      <tr>
+         <th>Entity</th>
+         <th>Count</th>
+      </tr>
+   </thead>
+   <tbody>
+      <tr ng-repeat="(key, value) in statistic.data track by key" ng-click="statistic.go(value.state)">
+         <td>{{value.text}}</td>
+         <td><strong>{{value.count}}</strong></td>
+      </tr>
+   </tbody>
+</table>

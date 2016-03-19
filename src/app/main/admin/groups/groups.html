@@ -1,0 +1,19 @@
+<table class="table table-hover table-bordered">
+   <thead>
+      <tr>
+         <th>#</th>
+         <th style="width: 80%;">Name</th>
+         <th colspan="3">Controls</th>
+      </tr>
+   </thead>
+   <tbody>
+      <tr ng-repeat="group in groups.list">
+
+         <td>{{group.group_id}}</td>
+         <td><strong>{{group.group_name}}</strong></td>
+         <td><button class="btn btn-primary" ui-sref="admin.group({id: group.group_id})">Edit</button></td>
+         <td><button class="btn btn-success" ng-click="">Students</button></td>
+         <td><button class="btn btn-danger" ng-click="groups.delete(group.group_id, $index)">Remove</button></td>
+      </tr>
+   </tbody>
+</table>

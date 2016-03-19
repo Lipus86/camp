@@ -1,0 +1,22 @@
+<form>
+  <div class="form-group">
+     <label for="name">Name</label>
+     <input id="name" class="form-control" type="text" ng-model="group.item.group_name" class="form-control">
+  </div>
+  <div class="form-group">
+     <label for="faculty">Faculty</label>
+     <select id="faculty" class="form-control"
+            ng-model="group.item.faculty_id"
+            ng-options="faculty.faculty_id as faculty.faculty_name for faculty in group.faculty"
+      ></select>
+  </div>
+   <div class="form-group">
+      <label for="speciality">Speciality</label>
+      <select id="speciality" class="form-control"
+            ng-model="group.item.speciality_id"
+            ng-options="speciality.speciality_id as (speciality.speciality_name + ' ' + speciality.speciality_code) for speciality in group.speciality"
+        ></select>
+   </div>
+
+   <button type="button" class="btn btn-success" ng-click="group.update()">Update</button>
+</form

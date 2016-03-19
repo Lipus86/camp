@@ -11,11 +11,10 @@
 </head>
 
 <body>
-   <div class="container">
-      <div class="row">
-         <div class="col-sm-12">
-            Test
-         </div>
+   <div class="container" ui-view ng-cloak>
+      <div class="row well" style="margin-top:200px">
+         <button ui-sref="admin.statistic" class="btn btn-danger col-md-3 col-md-offset-2">Admin</button>
+         <button ui-sref="dashboard" class="btn btn-success col-md-3 col-md-offset-2">Dashboard</button>
       </div>
    </div>
    <!-- bower:js -->
@@ -25,7 +24,28 @@
    <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
    <!-- endinject -->
    <!-- inject:js -->
-   <script src="/src/js/app.js"></script>
+   <script src="/src/app/main/admin/admin.module.js"></script>
+   <script src="/src/app/main/admin/groups/edit/group.edit.route.js"></script>
+   <script src="/src/app/main/admin/groups/edit/group.edit.controller.js"></script>
+   <script src="/src/app/main/admin/subjects/subjects.route.js"></script>
+   <script src="/src/app/main/admin/subjects/subjects.controller.js"></script>
+   <script src="/src/app/main/admin/statistic/statistic.route.js"></script>
+   <script src="/src/app/main/admin/statistic/statistic.controller.js"></script>
+   <script src="/src/app/main/admin/groups/groups.route.js"></script>
+   <script src="/src/app/main/admin/groups/groups.controller.js"></script>
+   <script src="/src/app/main/dashboard/dashboard.module.js"></script>
+   <script src="/src/app/main/dashboard/dashboard.route.js"></script>
+   <script src="/src/app/main/dashboard/dashboard.controller.js"></script>
+   <script src="/src/app/main/admin/admin.route.js"></script>
+   <script src="/src/app/main/admin/admin.controller.js"></script>
+   <script src="/src/app/services/subject.js"></script>
+   <script src="/src/app/services/statistic.js"></script>
+   <script src="/src/app/services/speciality.js"></script>
+   <script src="/src/app/services/group.js"></script>
+   <script src="/src/app/services/faculty.js"></script>
+   <script src="/src/app/app.module.js"></script>
+   <script src="/src/app/app.route.js"></script>
+   <script src="/src/app/app.constants.js"></script>
    <!-- endinject -->
 </body>
 
